@@ -1,0 +1,23 @@
+<script>
+    setTimeout(function() {
+        var flash = document.querySelector("#flash");
+        if (flash) {
+            flash.style.display = "none";
+        }
+    }, 5000);
+</script>
+
+<% if flash[:notice] %>
+  <div id="flash" class=" p-2 flex gap-2 m-1 justify-end bg-gray-100 rounded-md items-center">
+    <div><%= image_tag asset_path("checkmark.svg"), alt: "Logo" %></div>
+    <div class="text-sm font-medium text-gray-900 dark:text-white"><%= simple_format(flash[:notice]) %></div>
+  </div>
+<% end %>
+
+<% if flash[:alert] %>
+  <div id="flash" class=" p-2 flex gap-2 m-1 justify-end bg-gray-100 rounded-md items-center">
+    <div><%= image_tag asset_path("cross.svg"), alt: "Logo" %></div>
+    <div class="text-sm font-medium text-gray-900 dark:text-white"><%= simple_format(flash[:alert]) %></div>
+  </div>
+<% end %>
+

@@ -1,0 +1,10 @@
+<% if object.errors.any? %>
+  <div class="bg-red-100 border border-red-500 p-2 m-2 rounded-lg">
+    <ul>
+      <% object.errors.each do |error| %>
+        <div class="block text-lg font-medium text-red-900 "><%= error.options[:message] %></div>
+        <div class="block text-sm  text-gray-600"><%= error.options[:sub_message] %></div>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

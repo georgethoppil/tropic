@@ -1,0 +1,45 @@
+<div class="m-2 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+  <div class="p-4 flex justify-between ">
+    <div class="font-bold text-lg">Users</div>
+    <div>
+      <%= render "layouts/flash" %>
+      <div class="bg-indigo-500 rounded-md px-2 text-white"><%=link_to("+ Create New User", new_user_path) %></div>
+    </div>
+  </div>
+  <div class="relative overflow-x-auto">
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+      <tr>
+        <th scope="col" class="px-6 py-3">
+          Name
+        </th>
+        <th scope="col" class="px-6 py-3">
+          Email
+        </th>
+        <th scope="col" class="px-6 py-3">
+          Date Added
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      <%@users.each do |user|%>
+        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+            <td  class="px-6 py-4 ">
+              <div class="flex items-center">
+                <div><%= image_tag asset_path("profile.svg"), alt: "Logo" %></div>
+                <div class="mx-4"><%=get_name(user)%></div>
+              </div>
+
+            </td>
+            <td class="px-6 py-4">
+              <%=user.email%>
+            </td>
+            <td class="px-6 py-4">
+              <%=format_time(user.created_at)%>
+            </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
